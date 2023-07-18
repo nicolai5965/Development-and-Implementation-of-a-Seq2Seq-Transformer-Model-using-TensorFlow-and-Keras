@@ -84,7 +84,7 @@ The model was developed with Python 3.7 and TensorFlow 2.3.
 The load_model.py file contains code for loading the saved Transformer model and tokenizer.
 
 The trained model is loaded from disk by calling tf.keras.models.load_model() and passing the model path. Some custom objects need to be provided for loading the model correctly:
-'''
+```python
 model_saved = tf.keras.models.load_model(
     model_path,
     custom_objects={
@@ -93,7 +93,7 @@ model_saved = tf.keras.models.load_model(
         "MultiHeadAttention": MultiHeadAttention
     }
 )
-'''
+```
 The tokenizer is loaded separately by unpickling it from the saved pickle file:
 tokenizer = load_tokenizer(tokenizer_path)
 
