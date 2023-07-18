@@ -34,6 +34,15 @@ The model is currently trained on a dataset of texts loaded from a CSV file. The
 
 The preprocessing_config dictionary contains the settings for preprocessing.
 
+## MultiHeadAttention
+The MultiHeadAttention layer is a key component of the Transformer encoder and decoder. It allows the model to jointly attend to information from different representation subspaces at different positions.
+
+MultiHeadAttention applies self-attention multiple times in parallel on the same input sequence. This allows the model to learn different contextual relationships between words in the sequence.
+
+The independent self-attention layers, or "heads", give the model more expressive power to capture different types of connections. Their outputs are then concatenated and linearly transformed into the final values.
+
+Using MultiHeadAttention instead of regular self-attention allows the Transformer model to have greater ability to learn complex relationships in the sequences for better encoding and decoding.
+
 ## Encoder & Decoder
 The encoder and decoder are the core components of the Transformer model architecture.
 
