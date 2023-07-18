@@ -95,8 +95,9 @@ model_saved = tf.keras.models.load_model(
 )
 ```
 The tokenizer is loaded separately by unpickling it from the saved pickle file:
+```python
 tokenizer = load_tokenizer(tokenizer_path)
-
+```
 The loaded model can be used to make predictions by passing in input sequences. For example, the StochasticBeamSearch class does beam search decoding to generate text conditioned on a starting sentence.
 
 Key aspects of using the saved model:
