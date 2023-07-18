@@ -80,6 +80,34 @@ The main requirements are TensorFlow, Keras, and scikit-learn. See the import st
 
 The model was developed with Python 3.7 and TensorFlow 2.3.
 
+## Loading and Using the Trained Model
+The load_model.py file contains code for loading the saved Transformer model and tokenizer.
+
+The trained model is loaded from disk by calling tf.keras.models.load_model() and passing the model path. Some custom objects need to be provided for loading the model correctly:
+
+model_saved = tf.keras.models.load_model(
+    model_path,
+    custom_objects={
+        "CustomSchedule": CustomSchedule,
+        "compute": loss_function.compute,
+        "MultiHeadAttention": MultiHeadAttention
+    }
+)
+
+The tokenizer is loaded separately by unpickling it from the saved pickle file:
+tokenizer = load_tokenizer(tokenizer_path)
+
+The loaded model can be used to make predictions by passing in input sequences. For example, the StochasticBeamSearch class does beam search decoding to generate text conditioned on a starting sentence.
+
+Key aspects of using the saved model:
+
+* Loading model architecture and weights
+* Loading tokenizer from pickle file
+* Providing custom objects for custom classes
+* Making predictions on new data by passing inputs through model
+* Decoding predicted sequences into text
+This allows the trained Transformer model to be loaded and deployed for text generation after training is complete.
+
 ## References
 The Transformer model implementation is based on the paper [Attention Is All You Need](https://arxiv.org/abs/1706.03762)
  by Vaswani et al. (2017).
